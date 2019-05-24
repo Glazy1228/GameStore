@@ -1,0 +1,28 @@
+﻿@model GameStore.WEB.Models.GameViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<form method="post" action="">
+    @Html.AntiForgeryToken()
+    <p>Logo</p>
+    <img style="height: 150px; width: 150px;" src="@Url.Action("ToImage", "Helper", new { id = Model.Id, position="Logo"})">
+    <input type="hidden" name="Id" value="@Model.Id">
+    <p>Name</p>
+    <input type="text" name="Name" value="@Model.Name">
+    <p>Genre</p>
+    <input type="text" name="Genre" value="@Model.Genre">
+    <p>Price</p>
+    <input type="text" name="Price" value="@Model.Price">
+    <p>Platform</p>
+    <input type="text" name="Platform" value="@Model.Platform">
+    <p>Description</p>
+    <textarea name="Description" style="width: 300px; height: 150px;">@Model.Description</textarea>
+    <p>System Requirement</p>
+    <textarea name="SystemRequirement" style="width: 300px; height: 150px;">@Model.SystemRequirement</textarea>
+    <br />
+    <input style="margin-bottom: 20px;" type="submit" value="Сохранить">
+</form>
+<a style="color:black;" href="@Url.Action("GamesList")">Назад</a>

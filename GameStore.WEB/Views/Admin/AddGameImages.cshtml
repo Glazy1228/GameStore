@@ -1,0 +1,17 @@
+﻿@model int
+@{
+    ViewBag.Title = "AddGameImages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddGameImages", "Admin", FormMethod.Post, new
+{ enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <p>Logo</p>
+    <input type="hidden" name="GameId" value="@Model">
+    <input type="hidden" name="Position" value="Logo">
+    <input type="file" accept="image/*" name="model">
+    @Html.ValidationMessage("model")
+    <input type="submit" value="Сохранить">
+}

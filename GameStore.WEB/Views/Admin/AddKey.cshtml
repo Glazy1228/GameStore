@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    ViewBag.Title = "AddKey";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddKey</h2>
+@using (Html.BeginForm("AddKey", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <p>Ключ</p>
+    <input type="text" name="GameKey">
+    @Html.Hidden("GameId", Model)
+}

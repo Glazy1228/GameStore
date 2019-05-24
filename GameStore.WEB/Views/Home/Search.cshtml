@@ -1,0 +1,11 @@
+﻿@model List<GameStore.WEB.Models.GameViewModel>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+<div id="gamesList">
+    @{ Html.RenderPartial("_gamesListPartial"); }
+
+</div>

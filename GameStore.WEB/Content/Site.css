@@ -1,0 +1,56 @@
+﻿.table-img{
+    height: 250px;
+    width: auto;
+    display: flex;
+    flex-direction:column;
+}
+
+.Index-TD:hover {
+    border: 2px solid #000;
+    padding: 15px;
+}
+
+.Index-TD {
+    padding: 15px;
+}
+
+.UserPanel{
+    float: right;
+    width: 130px;
+}
+
+.UserLink {
+    float: right;
+    color: white;
+    padding-right: 20px;
+}
+
+.Index-table{
+    margin-bottom: 20px;
+}
+
+._TD {
+    border: 2px solid #000;
+    padding: 15px;
+}
+
+.imgGdiv {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction:column;
+    float:left;
+}
+
+.imgGame {
+    width: auto;
+    height: 300px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 15px;
+}
+
+.GameBody {
+    min-height: 500px;
+    max-height: 800px;
+}

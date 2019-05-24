@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+}
+
+<form method="post" action="">
+    @Html.AntiForgeryToken()
+    <p>Логин</p>
+    <input type="text" name="Name">
+    @Html.ValidationMessage("Name")
+    <p>Mail</p>
+    <input type="text" name="Email">
+    @Html.ValidationMessage("Email")
+    <p>Пароль</p>
+    <input type="password" name="Password">
+    <p>Повторите пароль</p>
+    <input type="password" name="ConfirmPassword">
+    <br />
+    @Html.ValidationMessage("Password")
+    <br />
+    <input type="submit" value="Вход">
+</form>
+

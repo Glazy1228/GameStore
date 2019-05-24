@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GameStore.WEB.Models.OrderViewModel>
+@{
+    ViewBag.Title = "OrdersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список покупок пользователя</h2>
+<table>
+    <tr>
+        <th>Game</th>
+        <th>DateTime</th>
+        <th>KeyId</th>
+        <th>User</th>
+    </tr>
+    @foreach (GameStore.WEB.Models.OrderViewModel order in Model)
+    {
+        <tr>
+            <td class="_TD">@Html.Action("GetGamesName", "Helper",new { id=order.GameId})</td>
+            <td class="_TD">@order.DateTime</td>
+            <td class="_TD">@order.KeyId</td>
+            <td class="_TD">@Html.Action("GetUsersName", "Helper", new { id = order.UserId })</td>
+        </tr>
+    }
+</table>

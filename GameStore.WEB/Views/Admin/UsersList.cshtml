@@ -1,0 +1,31 @@
+﻿@model IEnumerable<GameStore.WEB.Models.UserViewModel>
+@{
+    ViewBag.Title = "UsersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список пользователей</h2>
+<table>
+    <tr>
+        <th>Login</th>
+        <th>Mail</th>
+        <th>Role</th>
+    </tr>
+    @foreach (GameStore.WEB.Models.UserViewModel user in Model)
+    {
+        <tr>
+            <td class="_TD">@user.Login</td>
+            <td class="_TD">@user.Email</td> 
+            <td class="_TD">@Html.Action("GetUserRole", "Helper", new { Id = user.Id })</td>
+            <td class="_TD">
+                @using (Html.BeginForm("ChangeRole", "Admin", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("id", user.Id)
+                    @Html.DropDownList("role", new SelectList(new List<string>() { "Admin", "User", "Moderator" }))
+                    <input type="submit" value="Изменить роль">
+                }
+            </td>
+        </tr>        
+    }
+</table>

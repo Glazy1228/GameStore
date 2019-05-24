@@ -1,0 +1,9 @@
+﻿@model GameStore.WEB.Models.KeyViewModel
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ваш ключ к игре @ViewBag.Game</h2>
+<span style="font-weight: bold;">Ключ:</span> @Model.GameKey
+

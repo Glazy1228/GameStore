@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GameStore.WEB.Models.GameViewModel>
+@{
+    ViewBag.Title = "GamesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Список игр</h2>
+<a class="btn  btn-default" style="color: black;" href="@Url.Action("AddGame","Admin")">Добавить</a>
+<table>
+    <tr>
+        <th>Logo</th>
+        <th>Name</th>
+        <th>Platform</th>
+        <th>Genre</th>
+        <th>Price</th>
+    </tr>
+    @foreach (GameStore.WEB.Models.GameViewModel game in Model)
+    {
+    <tr>
+        <td class="_TD"><img style="height: 60px; width: auto;" src="@Url.Action("ToImage", "Helper", new { id = game.Id, position="Logo"})"></td>
+        <td class="_TD">@game.Name</td>
+        <td class="_TD">@game.Platform</td>
+        <td class="_TD">@game.Genre</td>
+        <td class="_TD">@game.Price руб</td>
+        <td class="_TD"><a style="color:black;" href="@Url.Action("Edit",new { GameId = game.Id})">Редактировать</a></td>
+        <td class="_TD"><a style="color:black;" href="@Url.Action("AddGameImages",new { gameName=game.Name})">Images</a></td>
+        <td class="_TD"><a style="color:black;" onclick="Request('@game.Name')">Удалить</a></td>
+        <td class="_TD"><a style="color: black;" href="@Url.Action("KeysList",new { id = game.Id })">Ключи</a></td>
+    </tr>
+    }
+</table>
+<script type="text/javascript">
+    function Request(name)
+    {
+        var res = confirm("Вы уверены что хотите удалить " + name + "?");
+        if (res)
+        {
+            document.location.href = '@Url.Action("Delete")' + '?name=' + name;            
+        }
+    }
+</script>
+

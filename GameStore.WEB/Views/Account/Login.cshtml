@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Вход";
+}
+
+<form method="post" action="">
+    @Html.AntiForgeryToken()
+    <p>Логин или mail</p>
+    <input type="text" name="Name">
+    @Html.ValidationMessage("Name")
+    <p>Пароль</p>
+    <input type="password" name="Password">
+    <br />
+    @Html.ValidationMessage("Password")
+    @Html.ValidationMessage("model")
+    <br />
+    <input type="submit" value="Вход">
+</form>
+
+

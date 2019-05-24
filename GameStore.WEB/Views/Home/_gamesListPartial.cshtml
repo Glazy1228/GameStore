@@ -1,0 +1,23 @@
+﻿@model IEnumerable<GameStore.WEB.Models.GameViewModel>
+<table class="Index-table">
+    
+    @{var mod = Model; } 
+
+    @for (int i = 0; i <= (Model.Count() / 4) + (Model.Count() % 4); i++)
+    {
+        var mod1 = mod.Take(4); 
+        <tr>
+            @foreach (var game in mod1)
+            {
+                <td class="Index-TD">
+                    <a href="@Url.Action("Game","Home",new { id = game.Id})">
+                        <img src="@Url.Action("ToImage", "Helper", new { Id = game.Id, position = "Logo" })" class="table-img">
+                        <p class="text">@game.Name</p>
+                        <p class="text">@game.Price руб.</p>
+                    </a>
+                </td>
+            }
+        </tr>
+        mod = mod.Skip(4);
+    }
+</table>

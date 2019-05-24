@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GameStore.WEB.Models.KeyViewModel>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Ключ</th>
+        <th>Active</th>
+    </tr>
+    @foreach (GameStore.WEB.Models.KeyViewModel key in Model)
+    {
+    <tr>
+        <td class="_TD">@key.Id</td>
+        <td class="_TD">@key.GameKey</td>
+        <td class="_TD">@key.Active</td>
+        <td class="_TD"><a style="color:black;" onclick="Request('@key.Id',@key.GameId)">Удалить</a></td>
+    </tr>
+    }
+</table>
+<script type="text/javascript">
+    function Request(id,gameId)
+    {
+        if (confirm("Вы уверены что хотите удалить?"))
+        {
+            document.location.href = '@Url.Action("DeleteKey", "Admin")' + '?id=' + id +'&gameId='+gameId;
+        }
+    }
+</script>

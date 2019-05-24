@@ -1,0 +1,11 @@
+﻿@model int
+
+@using (Html.BeginForm("AddKey","Admin",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <p>Ключ</p>
+    <input type="text" name="GameKey">
+    @Html.Hidden("GameId",Model)
+    <input type="submit" value="Добавить">
+}
+

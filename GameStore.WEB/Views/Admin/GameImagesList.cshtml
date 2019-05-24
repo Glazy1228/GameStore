@@ -1,0 +1,22 @@
+﻿@model IEnumerable<GameStore.WEB.Models.ImageViewModel>
+@{
+    ViewBag.Title = "GameImagesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.Action("GetGamesName", "Helper",new { id=Model.First().GameId})</h2>
+
+<table>
+    <tr>
+        <th>Position</th>
+        <th>Image</th>        
+    </tr>
+    @foreach (GameStore.WEB.Models.ImageViewModel image in Model)
+    {
+        <tr>
+            <td>@image.Position</td>
+            <td class="_TD"><img style="height: 150px; width: 150px;" src="@Url.Action("ToImage", "Helper", new { id = image.GameId, position=image.Position})"></td>
+        </tr>
+    }
+</table>
+

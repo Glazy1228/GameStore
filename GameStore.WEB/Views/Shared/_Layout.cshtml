@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <link rel="stylesheet" href="~/Content/main.css">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header-content">
+                <a href="@Url.Action("Index","Home")"><img class="Logo" src="~/Content/Store_logo.png"></a>
+                <div class="links">
+                    <ul class="header-info">
+                        <li><a class="link" href="@Url.Action("About","Home")">О нас</a></li>
+                        @if(User.IsInRole("Admin"))
+                        {
+                            <li><a class="link" href="@Url.Action("Index","Admin")">Управление сайтом</a></li>
+                        }
+                        @if(User.IsInRole("Moderator"))
+                        {
+                            <li><a class="link" href="@Url.Action("GamesList","Admin")">Редактирование игр</a></li>
+                        }
+                    </ul>
+                </div> 
+                <div class="UserPanel">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("Login", "Account")" class="UserLink">Вход</a>
+                        <a href="@Url.Action("Register", "Account")" class="UserLink">Регистрация</a>
+                    }
+                    else
+                    {
+                        <img style="height: 50px; width: 50px; float: left;" class="UserLogo" src="@Url.Action("ToImage", "Helper", new { position = "UserLogo" })">
+                        <p class="UserLink">@User.Identity.Name.Replace("Moderator", "")</p>
+                        <a href="@Url.Action("Logout", "Account")" class="UserLink">Выход</a>
+                    }
+                </div>
+                <form action="@Url.Action("Search", "Home")" method="get">
+                    <input class="Search" type="search" placeholder="Поиск игр..." name="name">
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="Body">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-info">
+                <p>Внимание</p>
+                <p>Данный сайт создан исключительно в учебных целях. И не является интернет магазином. <a style="color: white;" href="@Url.Action("About","Home")">Подробней...</a></p>
+                <img src="~/Content/pay-systems.png">
+            </div>
+            <hr>
+            <div class="wrapper">
+                <p>pcgstore.ru © 2019</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

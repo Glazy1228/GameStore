@@ -1,0 +1,37 @@
+﻿@model GameStore.WEB.Models.GameViewModel
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<div class="GameBody">
+    <div class="imgGdiv">
+        <img class="imgGame" src="@Url.Action("ToImage", "Helper", new { Id = Model.Id, position = "Logo" })">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <button onclick="location.href=button.getUrl()" class="btn  btn-default" style="width:250px; color:white; background-color: red;">Купить @Model.Price руб.</button>
+        }
+        else
+        {
+            <a href="@Url.Action("Login","Account")" class="btn  btn-default" style="width:250px; color:white; background-color: red;">Купить @Model.Price руб.</a>
+        }
+</div>
+    <div class="GameContent">
+        <span style="font-weight: bold;">Жанр:</span> @Model.Genre
+        <br>
+        <span style="font-weight: bold;">Активация в</span> @Model.Platform
+        <h4>ОПИСАНИЕ:</h4>
+        <p>@Model.Description</p>
+        <h4>СИСТЕМНЫЕ ТРЕБОВАНИЯ:</h4>
+        <p>@Model.SystemRequirement</p>
+    </div>
+</div>
+<script src="https://api.fondy.eu/static_common/v1/checkout/ipsp.js"></script>
+<script>
+	var button = $ipsp.get('button');
+    button.setMerchantId(1424125);
+    button.setAmount(@Model.Price, 'RUB');
+	button.setHost('api.fondy.eu');
+</script>
+

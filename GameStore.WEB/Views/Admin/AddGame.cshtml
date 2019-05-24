@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "AddGame";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" action="">
+    @Html.AntiForgeryToken()
+    <p>Name</p>
+    <input type="text" name="Name">
+    <p>Genre</p>
+    <input type="text" name="Genre">
+    <p>Price</p>
+    <input type="text" name="Price">
+    <p>Platform</p>
+    <input type="text" name="Platform">
+    <p>Description</p>
+    <textarea name="Description" style="width: 300px; height: 150px;"></textarea>
+    <p>System Requirement</p>
+    <textarea name="SystemRequirement" style="width: 300px; height: 150px;"></textarea>
+    <br />
+    <input style="margin-bottom: 20px;" type="submit" value="Сохранить">   
+</form>
+<a style="color:black;" href="@Url.Action("GamesList")">Назад</a>
+

@@ -1,0 +1,111 @@
+html{
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	font-family: Arial, sans-serif;	
+	font-size: 16px;
+}
+
+.text{
+    color:black;
+}
+body{
+	margin: 0;
+}
+
+.header{
+	height: 150px;
+	width: 100%;
+	background-color: #3e3e3e;	
+}
+
+.header-content{
+	padding-top: 30px;
+	margin: 0 auto;
+	max-width: 1100px;
+	min-width: 320px;		
+}
+
+.Logo{
+	margin-right: 20px;
+	height: 100px;
+	width: 100px;
+	float: left;	
+}
+
+.Search{
+	font-size: 20px;
+	height: 44px;
+	line-height: 40px;
+	width: 800px;
+	border: 2px solid black;
+	border-radius: 4px;
+}
+
+.links{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	padding-bottom: 10px; 
+}
+
+.link{
+	color: white;
+	padding-right: 20px;
+}
+
+.header-info{
+	margin: 0;
+	list-style-type: none;
+	display: flex;
+	float: space-between;
+	flex-direction: row;
+}
+a:link {
+  	text-decoration: none;
+}
+
+a:visited{
+	color: white;
+}
+
+a:hover {
+  	text-decoration: underline;
+}
+
+.footer{
+	
+	width: 100%;
+	background-color: #3e3e3e;		
+}
+
+.footer-info{
+	padding-top: 30px;
+	margin: 0 auto;
+	max-width: 1100px;
+	min-width: 320px;	
+	color: red;
+	font-size: 20px;
+}
+
+hr{
+	 border-top: 1px solid white;
+}
+
+.wrapper{
+	color: white;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	max-width: 1100px;
+	min-width: 320px;
+	background-color: #3e3e3e;
+}
+
+.Body{
+	margin: 0 auto;
+	max-width: 1100px;
+	min-width: 320px;
+    min-height: 530px;
+    max-height: initial;
+}

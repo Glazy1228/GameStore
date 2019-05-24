@@ -1,0 +1,38 @@
+﻿@model IEnumerable<GameStore.WEB.Models.KeyViewModel>
+@{
+    ViewBag.Title = "KeysList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>KeysList @ViewData["Id"]</h2>
+<div>
+    @{ try
+        {
+            Html.RenderPartial("_addKeyPartial", (int)ViewData["Id"] );
+        }
+        catch
+        {
+            Html.ActionLink("Добавить","AddKey",new { id = (int)ViewData["Id"] });
+        }
+      }
+</div>
+<a onclick="Refresh()" class="btn  btn-default"> Refresh</a>
+
+<div id="keysList">
+    @{ Html.RenderPartial("_keysTablePartial"); }
+</div>
+
+<script type="text/javascript">
+    function Refresh()
+    {
+        $.ajax({
+            url: '@Url.Action("KeysList","Admin")',
+            method: "GET",
+            success: function(data)
+            {
+                $('#keysList').html(data);
+            }
+        });
+    }
+</script>
+
