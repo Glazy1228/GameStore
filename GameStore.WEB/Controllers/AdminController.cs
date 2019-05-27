@@ -80,8 +80,7 @@ namespace GameStore.WEB.Controllers
 
         #region AddGame
         [HttpGet]
-        [Authorize(Roles = "Moderator")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult AddGame()
         {
             return View();
@@ -89,8 +88,7 @@ namespace GameStore.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Moderator")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult AddGame(GameViewModel gameView)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<GameViewModel, GameDTO>()).CreateMapper();
@@ -101,7 +99,7 @@ namespace GameStore.WEB.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin, Moderator")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult AddGameImages(string gameName)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<GameDTO, GameViewModel>()).CreateMapper();
@@ -112,8 +110,7 @@ namespace GameStore.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Moderator")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Moderator")]
         public ActionResult AddGameImages(HttpPostedFileBase model,ImageViewModel imageView)
         {
             if (ModelState.IsValid)

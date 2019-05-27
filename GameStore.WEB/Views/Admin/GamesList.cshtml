@@ -5,14 +5,7 @@
 }
 <h2>Список игр</h2>
 <a class="btn  btn-default" style="color: black;" href="@Url.Action("AddGame","Admin")">Добавить</a>
-<table>
-    <tr>
-        <th>Logo</th>
-        <th>Name</th>
-        <th>Platform</th>
-        <th>Genre</th>
-        <th>Price</th>
-    </tr>
+<table>    
     @foreach (GameStore.WEB.Models.GameViewModel game in Model)
     {
     <tr>
@@ -22,7 +15,7 @@
         <td class="_TD">@game.Genre</td>
         <td class="_TD">@game.Price руб</td>
         <td class="_TD"><a style="color:black;" href="@Url.Action("Edit",new { GameId = game.Id})">Редактировать</a></td>
-        <td class="_TD"><a style="color:black;" href="@Url.Action("AddGameImages",new { gameName=game.Name})">Images</a></td>
+        <td class="_TD"><a style="color:black;" href="@Url.Action("AddGameImages",new { gameName=game.Name})">Изображение</a></td>
         <td class="_TD"><a style="color:black;" onclick="Request('@game.Name')">Удалить</a></td>
         <td class="_TD"><a style="color: black;" href="@Url.Action("KeysList",new { id = game.Id })">Ключи</a></td>
     </tr>
